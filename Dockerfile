@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o api ./cmd/api/main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o api ./cmd/api/main.go
 
 
 # Multi-Stage build 
@@ -18,6 +18,6 @@ WORKDIR /root
 
 COPY --from=builder /app/api .
 
-EXPOSE $POST
+EXPOSE 8080
 
 CMD ["./api"]

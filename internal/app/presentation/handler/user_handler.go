@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log/slog"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -11,8 +12,10 @@ import (
 func GetUsers(c echo.Context) error {
 	// NOTE: This is the sample user.
 	u := &response.User{
-		Name:  "Jon",
-		Email: "jon@labstack.com",
+		UserID: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+		Name:   "Jon",
+		Email:  "jon@labstack.com",
 	}
+	slog.Info("Successfully get user info.", "uid", u.UserID, "Name", u.Name)
 	return c.JSON(http.StatusOK, u)
 }

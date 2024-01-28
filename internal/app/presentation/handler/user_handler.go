@@ -20,15 +20,15 @@ func GetUsers(c echo.Context) error {
 
 	ctx := c.Request().Context()
 
-	slog.DebugContext(ctx, "DEBUG Message.", "Name", u.Name, "Age", u.Age)
-	slog.InfoContext(ctx, "INFO Message.", "Name", u.Name, "Age", u.Age)
-	slog.WarnContext(ctx, "WARN Message.", "Name", u.Name, "Age", u.Age)
-	slog.ErrorContext(ctx, "ERROR Message.", "Name", u.Name, "Age", u.Age)
+	slog.DebugContext(ctx, "DEBUG Message", "Name", u.Name, "Age", u.Age)
+	slog.InfoContext(ctx, "INFO Message", "Name", u.Name, "Age", u.Age)
+	slog.WarnContext(ctx, "WARN Message", "Name", u.Name, "Age", u.Age)
+	slog.ErrorContext(ctx, "ERROR Message", "Name", u.Name, "Age", u.Age)
 
-	slog.Default().Log(ctx, logger.LevelNotice, "NOTICE Message.", "Name", u.Name, "Age", u.Age)
-	slog.Default().Log(ctx, logger.LevelAlert, "INFO ALERT.", "Name", u.Name, "Age", u.Age)
-	slog.Default().Log(ctx, logger.LevelCritical, "INFO CRITICAL.", "Name", u.Name, "Age", u.Age)
-	slog.Default().Log(ctx, logger.LevelEmergency, "INFO EMERGENCY.", "Name", u.Name, "Age", u.Age)
+	slog.Default().Log(ctx, logger.LevelNotice, "NOTICE Message", "Name", u.Name, "Age", u.Age)
+	slog.Default().Log(ctx, logger.LevelAlert, "ALERT Message", "Name", u.Name, "Age", u.Age)
+	slog.Default().Log(ctx, logger.LevelCritical, "CRITICAL Message", "Name", u.Name, "Age", u.Age)
+	slog.Default().Log(ctx, logger.LevelEmergency, "EMERGENCY Message", "Name", u.Name, "Age", u.Age)
 
 	return c.JSON(http.StatusOK, u)
 }

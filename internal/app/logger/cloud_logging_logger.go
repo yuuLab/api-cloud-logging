@@ -78,6 +78,7 @@ func replaceAttrFunc() func(groups []string, a slog.Attr) slog.Attr {
 			if a.Value.Any().(slog.Level) == LevelEmergency {
 				return slog.String(cloudLoggingKey.severity, "EMERGENCY")
 			}
+			return slog.String(cloudLoggingKey.severity, a.Value.String())
 		// level -> severity
 		case a.Key == slog.LevelKey:
 			return slog.Attr{

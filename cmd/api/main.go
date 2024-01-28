@@ -1,7 +1,7 @@
 package main
 
-import "github.com/yuuLab/api-cloud-logging/internal/app"
+import "github.com/yuuLab/api-cloud-logging/internal/app/server"
 
 func main() {
-	app.RunServer()
+	server.Run()
 }

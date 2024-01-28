@@ -1,4 +1,4 @@
-package app
+package server
 
 import (
 	"github.com/labstack/echo"
@@ -7,6 +7,5 @@ import (
 
 // Router ...
 func Router(e *echo.Echo) {
-	e.GET("/checkalive", handler.CheckAlive)
-	e.GET("/users", handler.GetUsers)
+	e.GET("/api/v1/users", handler.GetUsers)
 }

@@ -63,19 +63,17 @@ func replaceAttrFunc() func(groups []string, a slog.Attr) slog.Attr {
 			return slog.String(cloudLoggingKey.message, a.Value.String())
 		// level -> severity, WARN -> WARNING
 		case a.Key == slog.LevelKey:
-			if a.Value.Any().(slog.Level) == slog.LevelWarn {
+			levle := a.Value.Any().(slog.Level)
+			switch levle {
+			case slog.LevelWarn:
 				return slog.String(cloudLoggingKey.severity, "WARNING")
-			}
-			if a.Value.Any().(slog.Level) == LevelNotice {
+			case LevelNotice:
 				return slog.String(cloudLoggingKey.severity, "NOTICE")
-			}
-			if a.Value.Any().(slog.Level) == LevelCritical {
+			case LevelCritical:
 				return slog.String(cloudLoggingKey.severity, "CRITICAL")
-			}
-			if a.Value.Any().(slog.Level) == LevelAlert {
+			case LevelAlert:
 				return slog.String(cloudLoggingKey.severity, "ALERT")
-			}
-			if a.Value.Any().(slog.Level) == LevelEmergency {
+			case LevelEmergency:
 				return slog.String(cloudLoggingKey.severity, "EMERGENCY")
 			}
 			return slog.String(cloudLoggingKey.severity, a.Value.String())

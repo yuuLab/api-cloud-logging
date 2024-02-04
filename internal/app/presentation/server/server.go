@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/echo"
 	echomiddleware "github.com/labstack/echo/middleware"
 	"github.com/yuuLab/api-cloud-logging/internal/app/logger"
-	"github.com/yuuLab/api-cloud-logging/internal/app/server/middleware"
+	"github.com/yuuLab/api-cloud-logging/internal/app/presentation/server/middleware"
 )
 
 // Run runs the server.

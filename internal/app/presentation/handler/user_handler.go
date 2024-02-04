@@ -9,6 +9,15 @@ import (
 	"github.com/yuuLab/api-cloud-logging/internal/app/presentation/handler/response"
 )
 
+func Get(c echo.Context) error {
+	res := struct {
+		Message string `json:"message"`
+	}{
+		Message: "ok",
+	}
+	return c.JSON(http.StatusOK, res)
+}
+
 // GetUser get users.
 func GetUsers(c echo.Context) error {
 	// NOTE: This is the sample user.

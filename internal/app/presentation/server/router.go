@@ -8,4 +8,5 @@ import (
 // Router ...
 func Router(e *echo.Echo) {
 	e.GET("/api/v1/users", handler.GetUsers)
+	e.GET("/", handler.Get)
 }

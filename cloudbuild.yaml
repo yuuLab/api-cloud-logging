@@ -1,0 +1,31 @@
+steps:
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA",
+        ".",
+      ]
+  # Push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA",
+      ]
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "cloudrun-go-app-test"
+      - "--image"
+      - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA"
+      - "--region"
+      - "REGION"
+
+images:
+  - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA"

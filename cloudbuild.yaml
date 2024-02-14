@@ -25,7 +25,7 @@ steps:
       - "--image"
       - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA"
       - "--region"
-      - "REGION"
+      - "asia-northeast1"
 
 images:
   - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloudrun-go-app-test:$COMMIT_SHA"
